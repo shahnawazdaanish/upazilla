@@ -13,8 +13,10 @@ class CreateApplicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('applications', function (Blueprint $table) {
+        Schema::create('temp_applications', function (Blueprint $table) {
             $table->id();
+            $table->uuid("application_id");
+            $table->json("form_data");
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateApplicationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('applications');
+        Schema::dropIfExists('temp_applications');
     }
 }

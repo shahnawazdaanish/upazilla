@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Sign Up Form by Colorlib</title>
+<title>Upazilla Application</title>
 
 <!-- Font Icon -->
 <link rel="stylesheet" href="{{ asset("application/fonts/material-icon/css/material-design-iconic-font.min.css") }}">
