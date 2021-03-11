@@ -18,7 +18,7 @@ Route::post('/', 'ApplicationController@StoreApplicationType');
 Route::get('information', 'ApplicationController@ProvideApplicationInfo');
 Route::post('information', 'ApplicationController@StoreApplicationInfo');
 
-Route::get('thankyou', 'ApplicationController@ThankYou');
+Route::get('thankyou/{uuid}', 'ApplicationController@ThankYou');
 
 \Illuminate\Support\Facades\Auth::routes();
 

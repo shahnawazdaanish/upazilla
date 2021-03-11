@@ -75,11 +75,11 @@ class ApplicationController extends Controller
         $application->form_data = json_encode($form_data);
         $application->save();
 
-        return redirect('thankyou')->with('uuid', $application->application_id);
+        return redirect('thankyou/'.$application->application_id);
     }
 
-    public function ThankYou() {
-        dd(request());
+    public function ThankYou($uuid = "") {
+        return view("application.thankyou")->with("uuid", $uuid);
     }
 
     /**
