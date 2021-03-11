@@ -24,19 +24,45 @@
 
             <div class="thankyou-page">
                 <div class="_header">
-{{--                    <div class="logo">--}}
-{{--                        <img src="https://codexcourier.com/images/banner-logo.png" alt="">--}}
-{{--                    </div>--}}
+                    {{--                    <div class="logo">--}}
+                    {{--                        <img src="https://codexcourier.com/images/banner-logo.png" alt="">--}}
+                    {{--                    </div>--}}
                     <h1>ধন্যবাদ!</h1>
                 </div>
                 <div class="_body">
                     <div class="_box">
                         <h2>
-                            <strong>আপনার আবেদন গ্রহন করা হয়েছে</strong>, পরবর্তি যাচাই নিমিত্তে নিম্নের সিরিয়াল নাম্বারটি সংরক্ষন করুন..
+                            <strong>আপনার আবেদন গ্রহন করা হয়েছে</strong>, পরবর্তি যাচাই নিমিত্তে নিম্নের সিরিয়াল
+                            নাম্বারটি সংরক্ষন করুন..
                         </h2>
                         <h3>
                             আপনার যাচাই নাম্বারঃ <strong>{{ $uuid ?? '' }}</strong>
                         </h3>
+                    </div>
+                </div>
+                <div class="_body">
+                    <div class="_box">
+                        <h2>
+                            <strong>আপনার আবেদন </strong>
+                        </h2>
+                        <table class="table table-bordered table-striped">
+                            <tr>
+                                <td>আবেদনের বিষয়</td>
+                                <td><strong>{{ $data['subject'] ?? '' }}</strong></td>
+                            </tr>
+                            <tr>
+                                <td>বরাবর</td>
+                                <td><strong>{{ $data['to'] ?? '' }}</strong></td>
+                            </tr>
+                            @if(isset($form) && is_array($form))
+                                @foreach($form as $f)
+                                    <tr>
+                                        <td>{{ $f['title'] ?? '' }}</td>
+                                        <td><strong>{{ $data[$f['name'] ?? ''] ?? '' }}</strong></td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                        </table>
                     </div>
                 </div>
                 <div class="_footer">

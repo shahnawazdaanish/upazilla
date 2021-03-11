@@ -79,7 +79,13 @@ class ApplicationController extends Controller
     }
 
     public function ThankYou($uuid = "") {
-        return view("application.thankyou")->with("uuid", $uuid);
+
+        $form = Config::get("forms.formka");
+        $dataRow = Application::query()->where('application_id', $uuid)->first();
+        $data = json_decode($dataRow->form_data, true);
+        return view("application.thankyou")->with("uuid", $uuid)
+            ->with('form', $form)
+            ->with('data', $data);
     }
 
     /**

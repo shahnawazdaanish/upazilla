@@ -45,7 +45,7 @@ return array(
     ),
     array(
         'title' => 'বৈবাহিক অবস্থা',
-        'type' => 'radio',
+        'type' => 'select',
         'class' => 'marital_status',
         'name' => 'marital_status',
         'options' => array(
@@ -73,7 +73,7 @@ return array(
     ),
     array(
         'title' => 'লিঙ্গ',
-        'type' => 'radio',
+        'type' => 'select',
         'class' => 'sex',
         'name' => 'sex',
         'options' => array(
@@ -119,7 +119,7 @@ return array(
     ),
     array(
         'title' => 'পরিবারের কোন সদস্য প্রতিবন্ধী কিনা ',
-        'type' => 'radio',
+        'type' => 'select',
         'class' => 'disable_in_family',
         'name' => 'disable_in_family',
         'options' => array(
