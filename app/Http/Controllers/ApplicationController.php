@@ -65,6 +65,9 @@ class ApplicationController extends Controller
 
         $inputs = request()->all();
 
+        $photo = request()->hasFile('photo') ? request()->file("photo")->store('photos') : null;
+        $photo = request()->hasFile('family_photo') ? request()->file("family_photo")->store('photos') : null;
+
         $form_data = array_merge($form_data, $inputs);
 
         $application = new Application();
@@ -72,7 +75,11 @@ class ApplicationController extends Controller
         $application->form_data = json_encode($form_data);
         $application->save();
 
-        return view("application.thankyou");
+        return redirect('thankyou')->with('uuid', $application->application_id);
+    }
+
+    public function ThankYou() {
+        dd(request());
     }
 
     /**

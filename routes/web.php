@@ -18,6 +18,8 @@ Route::post('/', 'ApplicationController@StoreApplicationType');
 Route::get('information', 'ApplicationController@ProvideApplicationInfo');
 Route::post('information', 'ApplicationController@StoreApplicationInfo');
 
+Route::get('thankyou', 'ApplicationController@ThankYou');
+
 \Illuminate\Support\Facades\Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
