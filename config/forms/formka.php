@@ -52,7 +52,7 @@ return array(
             'অবিবাহিত',
             'বিবাহিত'
         ),
-        'isHidden' => true,
+        'isHidden' => false,
         'onchange' => "showOption('.marital_status', {'বিবাহিত' : '.spouse_name'})",
         'sub-form' => array(
             array(
