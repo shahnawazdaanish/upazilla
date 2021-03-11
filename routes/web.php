@@ -12,7 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'ApplicationController@Home');
+Route::post('/', 'ApplicationController@StoreApplicationType');
 
+Route::get('information', 'ApplicationController@ProvideApplicationInfo');
+Route::post('information', 'ApplicationController@StoreApplicationInfo');
 
 \Illuminate\Support\Facades\Auth::routes();
 
