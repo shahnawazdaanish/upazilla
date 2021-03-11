@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Str;
 use function Psy\debug;
 
 class ApplicationController extends Controller
@@ -60,6 +61,17 @@ class ApplicationController extends Controller
     }
 
     public function StoreApplicationInfo() {
+        $form_data = session()->get('application.first');
+
+        $inputs = request()->all();
+
+        $form_data = array_merge($form_data, $inputs);
+
+        $application = new Application();
+        $application->application_id = (string) Str::uuid();
+        $application->form_data = json_encode($form_data);
+        $application->save();
+
         return view("application.thankyou");
     }
 

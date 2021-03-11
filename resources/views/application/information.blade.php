@@ -10,7 +10,7 @@
             </div>
         </div>--}}
         <div class="signup-form">
-            <form method="POST" action="#" class="register-form" id="register-form">
+            <form method="POST" action="#" class="register-form" id="register-form" enctype="multipart/form-data">
                 {!! csrf_field() !!}
                 <div class="form-row">
 
