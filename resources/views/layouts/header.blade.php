@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="{{ asset("application/vendor/datepicker/datepicker.min.css") }}">
 
 <link rel="stylesheet" href="{{ asset("application/vendor/fileupload/filepond.css") }}">
+<link rel="stylesheet" href="{{ asset("application/vendor/fileupload/filepond-plugin-image-preview.css") }}">
 <link rel="stylesheet" href="{{ asset("application/vendor/fileupload/filepond-plugin-image-edit.css") }}">
 
 <!-- Main css -->

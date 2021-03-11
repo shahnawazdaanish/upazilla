@@ -1,5 +1,5 @@
 (function ($) {
-    var fileParent = $('.file-upload input');
+    var fileParent = $('.file-upload input[type="file"]');
     // First register any plugins
     $.fn.filepond.registerPlugin(
         FilePondPluginFileValidateType,
@@ -8,8 +8,10 @@
         FilePondPluginImageResize,
         FilePondPluginImageEdit
     );
+
     // Turn input element into a pond
     fileParent.filepond({
+        allowImagePreview: true,
         labelIdle: `ছবি তুলুন /<span class="filepond--label-action">আপলোড করুন</span>`,
         imagePreviewHeight: 80,
         imageCropAspectRatio: '1:1',

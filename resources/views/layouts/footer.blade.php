@@ -9,12 +9,12 @@
 <script src="{{ asset("application/vendor/datepicker/datepicker.min.js") }} "></script>
 
 
-<script src="{{ asset("application/vendor/fileupload/filepond.min.js") }} "></script>
 <script src="{{ asset("application/vendor/fileupload/filepond-plugin-image-preview.min.js") }} "></script>
 <script src="{{ asset("application/vendor/fileupload/filepond-plugin-image-crop.js") }} "></script>
 <script src="{{ asset("application/vendor/fileupload/filepond-plugin-image-resize.js") }} "></script>
 <script src="{{ asset("application/vendor/fileupload/filepond-plugin-image-edit.js") }} "></script>
 <script src="{{ asset("application/vendor/fileupload/filepond-plugin-file-validate-type.js") }} "></script>
+<script src="{{ asset("application/vendor/fileupload/filepond.min.js") }} "></script>
 <script src="{{ asset("application/vendor/fileupload/filepond.jquery.js") }} "></script>
 
 
