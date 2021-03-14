@@ -647,8 +647,10 @@ li.init:after {
 label.error {
     display: block;
     position: absolute;
-    top: 0px;
+    bottom:-25px;
     right: 0;
+    font-size: 11px;
+    color: #c44e47;
 }
 
 label.error:after {
@@ -656,7 +658,7 @@ label.error:after {
     position: absolute;
     content: '\f1f8';
     right: 20px;
-    top: 37px;
+    top: -50px;
     font-size: 23px;
     color: #c70000;
 }

@@ -95,6 +95,7 @@ Route::group([
             'inventories' => \API\CommonController::class,
             'stores' => \API\CommonController::class,
             'products' => \API\CommonController::class,
+            'applications' => \API\ApplicationController::class,
             'admins' => \API\AdminController::class,
             'users' => \API\UserController::class,
         ]);

@@ -6,13 +6,18 @@ return array(
         'type' => 'text',
         'class' => 'applicant_name_bn',
         'name' => 'applicant_name_bn',
-        'isHidden' => false
+        'default' => 'Shahnawaz',
+        'isHidden' => false,
+        'js_rules' => "{required: true, maxlength: 11}",
+        'backend_rules' => "required",
+//        'html_extra' => 'pattern="[0-9]{1,5}"'
     ),
     array(
         'title' => 'APPLICANT NAME',
         'type' => 'text',
         'class' => 'applicant_name_en',
         'name' => 'applicant_name_en',
+        'default' => 'Shahnawaz',
         'isHidden' => false
     ),
     array(
@@ -20,6 +25,7 @@ return array(
         'type' => 'text',
         'class' => 'applicant_father_name_bn',
         'name' => 'applicant_father_name_bn',
+        'default' => 'Shahnawaz',
         'isHidden' => false
     ),
     array(
@@ -27,6 +33,7 @@ return array(
         'type' => 'text',
         'class' => 'applicant_father_name_en',
         'name' => 'applicant_father_name_en',
+        'default' => 'Shahnawaz',
         'isHidden' => false
     ),
     array(
@@ -34,6 +41,7 @@ return array(
         'type' => 'text',
         'class' => 'applicant_mother_name_bn',
         'name' => 'applicant_mother_name_bn',
+        'default' => 'Shahnawaz',
         'isHidden' => false
     ),
     array(
@@ -41,6 +49,7 @@ return array(
         'type' => 'text',
         'class' => 'applicant_mother_name_en',
         'name' => 'applicant_mother_name_en',
+        'default' => 'Shahnawaz',
         'isHidden' => false
     ),
     array(
@@ -48,12 +57,13 @@ return array(
         'type' => 'select',
         'class' => 'marital_status',
         'name' => 'marital_status',
+        'default' => 'অবিবাহিত',
         'options' => array(
-            'অবিবাহিত',
-            'বিবাহিত'
+            0 => 'অবিবাহিত',
+            1 =>'বিবাহিত'
         ),
         'isHidden' => false,
-        'onchange' => "showOption('.marital_status', {'বিবাহিত' : '.spouse_name'})",
+        'onchange' => "showOption('.marital_status', {'1' : '.spouse_name'})",
         'sub-form' => array(
             array(
                 'title' => 'স্বামী/ স্ত্রী নাম',
@@ -72,21 +82,112 @@ return array(
         'isHidden' => false
     ),
     array(
+        'title' => 'ঠিকানা',
+        'type' => 'label',
+        'class' => 'address',
+        'name' => '',
+        'isHidden' => false,
+        'sub-form' => array(
+            array(
+                'title' => 'স্থায়ীঃ',
+                'type' => 'label',
+                'class' => 'permanent_address',
+                'isHidden' => false,
+                'sub-form' => array(
+                    array(
+                        'title' => 'গ্রাম/ রাস্তা',
+                        'type' => 'text',
+                        'class' => 'perm_road',
+                        'name' => 'addr_perm_road',
+                        'default' => 'অবিবাহিত',
+                        'isHidden' => false,
+                        'backend_rules' => 'required|max:4'
+                    ),
+                    array(
+                        'title' => 'ইউনিয়ন',
+                        'type' => 'text',
+                        'class' => 'perm_union',
+                        'name' => 'addr_perm_union',
+                        'default' => 'অবিবাহিত',
+                        'isHidden' => false,
+                    ),
+                    array(
+                        'title' => 'উপজেলা',
+                        'type' => 'text',
+                        'class' => 'perm_upazilla',
+                        'name' => 'addr_perm_upazilla',
+                        'default' => 'অবিবাহিত',
+                        'isHidden' => false,
+                    ),
+                    array(
+                        'title' => 'জেলা',
+                        'type' => 'text',
+                        'class' => 'perm_zilla',
+                        'name' => 'addr_perm_zilla',
+                        'default' => 'অবিবাহিত',
+                        'isHidden' => false,
+                    )
+                )
+            ),
+            array(
+                'title' => 'বতমানঃ',
+                'type' => 'label',
+                'class' => 'present_address',
+                'isHidden' => false,
+                'sub-form' => array(
+                    array(
+                        'title' => 'গ্রাম/ রাস্তা',
+                        'type' => 'text',
+                        'class' => 'pre_road',
+                        'name' => 'addr_pres_road',
+                        'default' => 'অবিবাহিত',
+                        'isHidden' => false,
+                    ),
+                    array(
+                        'title' => 'ইউনিয়ন',
+                        'type' => 'text',
+                        'class' => 'pre_union',
+                        'name' => 'addr_pres_union',
+                        'default' => 'অবিবাহিত',
+                        'isHidden' => false,
+                    ),
+                    array(
+                        'title' => 'উপজেলা',
+                        'type' => 'text',
+                        'class' => 'pre_upazilla',
+                        'name' => 'addr_pres_upazilla',
+                        'default' => 'অবিবাহিত',
+                        'isHidden' => false,
+                    ),
+                    array(
+                        'title' => 'জেলা',
+                        'type' => 'text',
+                        'class' => 'pre_zilla',
+                        'name' => 'addr_pres_zilla',
+                        'default' => 'অবিবাহিত',
+                        'isHidden' => false,
+                    )
+                )
+            )
+        )
+    ),
+    array(
         'title' => 'লিঙ্গ',
         'type' => 'select',
-        'class' => 'sex',
-        'name' => 'sex',
+        'class' => 'gender',
+        'name' => 'gender',
         'options' => array(
-            'পুরুষ',
-            'মহিলা'
+            0 =>'পুরুষ',
+            1 => 'মহিলা'
         ),
         'isHidden' => false
     ),
     array(
         'title' => 'জাতীয় পরিচয় পত্র নম্বর',
         'type' => 'text',
-        'class' => 'nid',
-        'name' => 'nid',
+        'class' => 'nid_no',
+        'name' => 'nid_no',
+        'default' => 'অবিবাহিত',
         'isHidden' => false
     ),
     array(
@@ -94,6 +195,7 @@ return array(
         'type' => 'text',
         'class' => 'mobile_no',
         'name' => 'mobile_no',
+        'default' => 'অবিবাহিত',
         'isHidden' => false
     ),
     array(
@@ -101,13 +203,15 @@ return array(
         'type' => 'text',
         'class' => 'spouse_nid',
         'name' => 'spouse_nid',
+        'default' => 'অবিবাহিত',
         'isHidden' => false
     ),
     array(
         'title' => 'পরিবারের সদস্য সংখ্যা',
         'type' => 'text',
-        'class' => 'head_count',
-        'name' => 'head_count',
+        'class' => 'family_members_count',
+        'name' => 'family_members_count',
+        'default' => 'অবিবাহিত',
         'isHidden' => false
     ),
     array(
@@ -115,16 +219,17 @@ return array(
         'type' => 'text',
         'class' => 'monthly_income',
         'name' => 'monthly_income',
+        'default' => 'অবিবাহিত',
         'isHidden' => false
     ),
     array(
         'title' => 'পরিবারের কোন সদস্য প্রতিবন্ধী কিনা ',
         'type' => 'select',
-        'class' => 'disable_in_family',
-        'name' => 'disable_in_family',
+        'class' => 'is_family_member_disabled',
+        'name' => 'is_family_member_disabled',
         'options' => array(
-            'হ্যা',
-            'না'
+            1 => 'হ্যা',
+            0 =>'না'
         ),
         'isHidden' => false
     ),
@@ -132,14 +237,14 @@ return array(
         'title' => 'ছবি(নিজ)',
         'type' => 'photo',
         'class' => 'photo file-upload',
-        'name' => 'photo',
+        'name' => 'self_picture',
         'isHidden' => false
     ),
     array(
         'title' => 'ছবি (স্বামী/স্ত্রী, অবিবাহিত হলে পরিবার প্রধানের ছবি) ',
         'type' => 'photo',
         'class' => 'family_photo file-upload',
-        'name' => 'family_photo',
+        'name' => 'spouse_or_family_member_picture',
         'isHidden' => false
     )
 );

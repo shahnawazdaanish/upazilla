@@ -20,73 +20,11 @@
                         $forms = array_chunk($form, ceil(count($form) / 2))
                     ?>
                     @if(isset($forms) && is_array($forms))
-                        @foreach($forms as $form)
+                        @foreach($forms as $formElem)
                             <div class="form-group">
-                                @if(isset($form) && is_array($form) && !is_null($form))
-                                    @foreach($form as $f)
-
-                                        @if(isset($f['type']) && $f['type'] == 'select')
-                                            <div class="form-select {{ $f['class'] ?? '' }}"
-                                                 style="display: {{ isset($f['isHidden']) && $f['isHidden'] ? 'none' : '' }}">
-                                                <div class="label-flex">
-                                                    <label for="meal_preference">{{ $f['title'] ?? '' }}</label>
-                                                    {{--                                            <a href="#" class="form-link">Lunch detail</a>--}}
-                                                </div>
-                                                <div class="select-list">
-                                                    <select name="{{ $f['name'] ?? '' }}" id="{{ $f['name'] ?? '' }}"
-                                                            style="display: {{ isset($f['isHidden']) && $f['isHidden'] ? 'none' : '' }}"
-                                                            onchange="{{ $f['onchange'] ?? '' }}">
-                                                        <option value="">নির্বাচন</option>
-                                                        @if(isset($f['options']) && is_array($f['options']))
-                                                            @foreach($f['options'] as $option)
-                                                                <option value="{{ $option }}">{{ $option }}</option>
-                                                            @endforeach
-                                                        @endif
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        @endif
-
-                                        @if(isset($f['type']) && $f['type'] == 'text')
-                                            <div class="form-input {{ $f['class'] ?? '' }}"
-                                                 style="display: {{ isset($f['isHidden']) && $f['isHidden'] ? 'none' : '' }}">
-                                                <label for="{{ $f['title'] ?? '' }}"
-                                                       class="required">{{ $f['title'] ?? '' }}</label>
-                                                <input type="text" name="{{ $f['name'] ?? '' }}"
-                                                       id="{{ $f['name'] ?? '' }}"/>
-                                            </div>
-                                        @endif
-                                        @if(isset($f['type']) && $f['type'] == 'radio')
-
-                                            <div class="form-radio {{ $f['class'] ?? '' }}"
-                                                 style="display: {{ isset($f['isHidden']) && $f['isHidden'] ? 'none' : '' }}">
-                                                <div class="label-flex">
-                                                    <label for="{{ $f['title'] ?? '' }}">{{ $f['title'] ?? '' }}</label>
-                                                </div>
-                                                <div class="form-radio-group">
-                                                    @if(isset($f['options']))
-                                                        @foreach($f['options'] as $opt)
-                                                            <div class="form-radio-item">
-                                                                <input type="radio" name="{{ $f['name'] ?? '' }}"
-                                                                       id="{{ $opt }}" checked>
-                                                                <label for="{{ $opt }}">{{ $opt }}</label>
-                                                                <span class="check"></span>
-                                                            </div>
-                                                        @endforeach
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        @endif
-                                        @if(isset($f['type']) && $f['type'] == 'photo')
-                                            <div class="form-input {{ $f['class'] ?? '' }}"
-                                                 style="width:180px; display: {{ isset($f['isHidden']) && $f['isHidden'] ? 'none' : '' }}">
-                                                <label for="{{ $f['title'] ?? '' }}"
-                                                       class="required">{{ $f['title'] ?? '' }}</label>
-                                                <input type="file" name="{{ $f['name'] ?? '' }}"
-                                                       id="{{ $f['name'] ?? '' }}"/>
-                                            </div>
-                                        @endif
-
+                                @if(isset($formElem) && is_array($formElem) && !is_null($formElem))
+                                    @foreach($formElem as $f)
+                                        <x-element :component="$f"/>
                                     @endforeach
                                 @endif
                             </div>
@@ -121,5 +59,53 @@
                 }
             }
         }
+
+        $('#register-form').validate({
+            rules: {
+                @isset($form)
+                    @foreach($form as $f)
+                "{{ $f['name'] ?? '' }}": {{ $f['js_rules'] ?? "{}" }},
+                         @isset($f['sub-form'])
+                            @foreach($f['sub-form'] as $f1)
+                "{{ $f1['name'] ?? '' }}": {{ $f1['js_rules'] ?? "{}" }},
+                                @isset($fs['sub-form'])
+                                    @foreach($f1['sub-form'] as $f2)
+                "{{ $f2['name'] ?? '' }}": {{ $f2['js_rules'] ?? "{}" }},
+                                    @endforeach
+                                @endisset
+                            @endforeach
+                        @endisset
+                    @endforeach
+                @endisset
+            },
+            onfocusout: function (element) {
+                $(element).valid();
+            },
+        });
+
+        jQuery.extend(jQuery.validator.messages, {
+            required: "",
+            remote: "",
+            email: "",
+            url: "",
+            date: "",
+            dateISO: "",
+            number: "",
+            digits: "",
+            creditcard: "",
+            equalTo: ""
+        });
+
+
+        FilePond.setOptions({
+            server: {
+                url: '/filepond/api',
+                process: '/process',
+                revert: '/process',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            }
+        });
     </script>
 @endsection

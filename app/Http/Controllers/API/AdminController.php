@@ -42,7 +42,7 @@ class AdminController extends Controller
         $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
-            'store_id' => 'nullable|numeric',
+//            'store_id' => 'nullable|numeric',
             'remember' => 'boolean'
         ]);
 
@@ -60,7 +60,7 @@ class AdminController extends Controller
             }
 
             // Store Checking
-            if(!empty($request->get("store_id"))) {
+            /*if(!empty($request->get("store_id"))) {
                 if(auth()->guard("admin_api")->user()->store_id == $request->get("store_id")) {
                     // pass
                 } else {
@@ -68,7 +68,7 @@ class AdminController extends Controller
                         'message' => 'Unable to login! Please check your store'
                     ], 401);
                 }
-            }
+            }*/
 
 
             if (auth()->guard('admin_api')->user()->status == 'ACTIVE') {

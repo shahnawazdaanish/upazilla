@@ -9,6 +9,9 @@
 <div class="main">
     @include('layouts.nav')
     <div class="container">
+        @if($errors->any())
+            {!! implode('', $errors->all('<div class="alert">:message</div>')) !!}
+        @endif
         @yield('content')
     </div>
 
