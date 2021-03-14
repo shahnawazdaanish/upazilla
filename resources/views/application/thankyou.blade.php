@@ -48,17 +48,17 @@
                         <table class="table table-bordered table-striped">
                             <tr>
                                 <td>আবেদনের বিষয়</td>
-                                <td><strong>{{ $data['subject'] ?? '' }}</strong></td>
+                                <td><strong>{{ $data['application_type'] ?? '' }}</strong></td>
                             </tr>
                             <tr>
                                 <td>বরাবর</td>
-                                <td><strong>{{ $data['to'] ?? '' }}</strong></td>
+                                <td><strong>{{ $data['application_to'] ?? '' }}</strong></td>
                             </tr>
-                            @if(isset($form) && is_array($form))
-                                @foreach($form as $f)
+                            @if(isset($data) && is_array($data))
+                                @foreach($data as $k => $f)
                                     <tr>
-                                        <td>{{ $f['title'] ?? '' }}</td>
-                                        <td><strong>{{ $data[$f['name'] ?? ''] ?? '' }}</strong></td>
+                                        <td>{{ $k }}</td>
+                                        <td><strong>{{ $f }}</strong></td>
                                     </tr>
                                 @endforeach
                             @endif

@@ -215,8 +215,38 @@ class ApplicationController extends Controller
     {
 
         $form = Config::get("forms.formka");
-        $dataRow = Application::query()->where('application_id', $uuid)->first();
-        $data = json_decode($dataRow->form_data, true);
+        $application = Application::query()->where('application_id', $uuid)->first();
+        // $data = json_decode($dataRow->form_data, true);
+
+        $data = [];
+        if(isset($application->application_type)) {
+            $form = $this->SwitchForm($application->application_type);
+
+            $data["আবেদনের বিষয়"] = $application->application_type;
+            $data["বরাবর"] = $application->application_to;
+
+            foreach ($form as $f) {
+                if(isset($f['title'])) {
+                    $data[$f['title']] = isset($f['name']) ? $application[$f['name']] : '';
+                }
+                if(isset($f['sub-form'])){
+                    foreach ($f['sub-form'] as $fL2){
+                        if(isset($fL2['title'])) {
+                            $data[$fL2['title']] = isset($fL2['name']) ? $application[$fL2['name']] : '';
+                        }
+                        if(isset($fL2['sub-form'])){
+                            foreach ($fL2['sub-form'] as $fL3){
+                                if(isset($fL3['title'])) {
+                                    $data[$fL3['title']] = isset($fL3['name']) ? $application[$fL3['name']] : '';
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
         return view("application.thankyou")->with("uuid", $uuid)
             ->with('form', $form)
             ->with('data', $data);
