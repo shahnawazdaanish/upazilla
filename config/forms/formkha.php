@@ -247,7 +247,7 @@ return array(
                 'name' => 'land_size',
                 'default' => 'অবিবাহিত',
                 'isHidden' => false,
-                'backend_rules' => 'required|max:4'
+                'backend_rules' => 'required'
             ),
             array(
                 'title' => 'মৌজা',

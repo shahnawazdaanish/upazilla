@@ -45,6 +45,7 @@
     <script>
         // function showOption('.app_subject', ['বিবিধ' => '.others', 'ভাতা' => '.vata']){
         function showOption(parentClass, arrayOfLogics) {
+            console.log(arrayOfLogics)
             var parent = $(parentClass);
             var parentVal = parent.find("select option:selected").val();
 
@@ -52,12 +53,35 @@
 
                 for (var key of Object.keys(arrayOfLogics)) {
                     if (key === parentVal) {
-                        $(arrayOfLogics[key]).show();
+                        if(Array.isArray(arrayOfLogics[key])) {
+                            for(var elem of arrayOfLogics[key]) {
+                                $(elem).show();
+                            }
+                        } else {
+                            $(arrayOfLogics[key]).show();
+                        }
                     } else {
-                        $(arrayOfLogics[key]).hide();
+                        if(Array.isArray(arrayOfLogics[key])) {
+                            for(var hideElem of arrayOfLogics[key]) {
+                                $(hideElem).hide();
+                            }
+                        } else {
+                            $(arrayOfLogics[key]).hide();
+                        }
                     }
                 }
             }
+        }
+        function calculateAge(from, to) {
+            var today = new Date();
+            var birthDate = new Date($(from).val());
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+
+            return $(to).val(age);
         }
 
         $('#register-form').validate({
