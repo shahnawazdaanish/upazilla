@@ -46,19 +46,17 @@
                             <strong>আপনার আবেদন </strong>
                         </h2>
                         <table class="table table-bordered table-striped">
-                            <tr>
-                                <td>আবেদনের বিষয়</td>
-                                <td><strong>{{ $data['application_type'] ?? '' }}</strong></td>
-                            </tr>
-                            <tr>
-                                <td>বরাবর</td>
-                                <td><strong>{{ $data['application_to'] ?? '' }}</strong></td>
-                            </tr>
                             @if(isset($data) && is_array($data))
                                 @foreach($data as $k => $f)
                                     <tr>
                                         <td>{{ $k }}</td>
-                                        <td><strong>{{ $f }}</strong></td>
+                                        @if(strpos($k, 'ছবি') !== false)
+                                            <td><img style="max-width: 150px"
+                                                     src="{{ url()->to('/') . '/' . $f }}" alt="" class="img">
+                                            </td>
+                                        @else
+                                            <td><strong>{{ $f }}</strong></td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             @endif

@@ -53,35 +53,6 @@ return array(
         'isHidden' => false
     ),
     array(
-        'title' => 'বৈবাহিক অবস্থা',
-        'type' => 'select',
-        'class' => 'marital_status',
-        'name' => 'marital_status',
-        'default' => 'অবিবাহিত',
-        'options' => array(
-            0 => 'অবিবাহিত',
-            1 =>'বিবাহিত'
-        ),
-        'isHidden' => false,
-        'onchange' => "showOption('.marital_status', {'1' : '.spouse_name'})",
-        'sub-form' => array(
-            array(
-                'title' => 'স্বামী/ স্ত্রী নাম',
-                'type' => 'text',
-                'class' => 'spouse_name',
-                'name' => 'spouse_name',
-                'isHidden' => true
-            ),
-        )
-    ),
-    array(
-        'title' => 'জন্ম তারিখ',
-        'type' => 'text',
-        'class' => 'date_of_birth',
-        'name' => 'date_of_birth',
-        'isHidden' => false
-    ),
-    array(
         'title' => 'ঠিকানা',
         'type' => 'label',
         'class' => 'address',
@@ -172,23 +143,37 @@ return array(
         )
     ),
     array(
-        'title' => 'লিঙ্গ',
-        'type' => 'select',
-        'class' => 'gender',
-        'name' => 'gender',
-        'options' => array(
-            0 =>'পুরুষ',
-            1 => 'মহিলা'
-        ),
-        'isHidden' => false
-    ),
-    array(
         'title' => 'জাতীয় পরিচয় পত্র নম্বর',
         'type' => 'text',
         'class' => 'nid_no',
         'name' => 'nid_no',
         'default' => 'অবিবাহিত',
         'isHidden' => false
+    ),
+    array(
+        'title' => 'জন্ম তারিখ',
+        'type' => 'text',
+        'class' => 'date_of_birth',
+        'name' => 'date_of_birth',
+        'isHidden' => false
+    ),
+    array(
+        'title' => 'প্রতিষ্ঠানের নাম (প্রযোজ্য ক্ষেত্রে)',
+        'type' => 'text',
+        'class' => 'org_name',
+        'name' => 'org_name',
+        'default' => 'অবিবাহিত',
+        'isHidden' => false,
+        'required' => false
+    ),
+    array(
+        'title' => 'প্রতিষ্ঠানের ঠিকানা',
+        'type' => 'text',
+        'class' => 'org_address',
+        'name' => 'org_address',
+        'default' => 'অবিবাহিত',
+        'isHidden' => false,
+        'required' => false
     ),
     array(
         'title' => 'মোবাইল নম্বরঃ',
@@ -199,52 +184,80 @@ return array(
         'isHidden' => false
     ),
     array(
-        'title' => 'স্বামী/ স্ত্রীর জাতীয় পরিচয়পত্র নম্বর',
-        'type' => 'text',
-        'class' => 'spouse_nid',
-        'name' => 'spouse_nid',
-        'default' => 'অবিবাহিত',
-        'isHidden' => false
+        'title' => 'জমির বিবরণ',
+        'type' => 'label',
+        'class' => 'land',
+        'name' => '',
+        'isHidden' => false,
+        'sub-form' => array(
+            array(
+                'title' => 'জমির পরিমান',
+                'type' => 'text',
+                'class' => 'land_size',
+                'name' => 'land_size',
+                'default' => 'অবিবাহিত',
+                'isHidden' => false,
+                'backend_rules' => 'required'
+            ),
+            array(
+                'title' => 'মৌজা',
+                'type' => 'text',
+                'class' => 'land_mouja',
+                'name' => 'land_mouja',
+                'default' => 'অবিবাহিত',
+                'isHidden' => false,
+            ),
+            array(
+                'title' => 'দাগ',
+                'type' => 'text',
+                'class' => 'land_daag',
+                'name' => 'land_daag',
+                'default' => 'অবিবাহিত',
+                'isHidden' => false,
+            ),
+            array(
+                'title' => 'খতিয়ান নং',
+                'type' => 'text',
+                'class' => 'land_khatian',
+                'name' => 'land_khatian',
+                'default' => 'অবিবাহিত',
+                'isHidden' => false,
+            )
+        )
     ),
     array(
-        'title' => 'পরিবারের সদস্য সংখ্যা',
-        'type' => 'text',
-        'class' => 'family_members_count',
-        'name' => 'family_members_count',
-        'default' => 'অবিবাহিত',
-        'isHidden' => false
-    ),
-    array(
-        'title' => 'মাসিক আয়',
-        'type' => 'text',
-        'class' => 'monthly_income',
-        'name' => 'monthly_income',
-        'default' => 'অবিবাহিত',
-        'isHidden' => false
-    ),
-    array(
-        'title' => 'পরিবারের কোন সদস্য প্রতিবন্ধী কিনা ',
+        'title' => 'নিজের ঘর আছে কিনা',
         'type' => 'select',
-        'class' => 'is_family_member_disabled',
-        'name' => 'is_family_member_disabled',
+        'class' => 'has_own_house',
+        'name' => 'has_own_house',
         'options' => array(
-            1 => 'হ্যা',
-            0 =>'না'
+            0 => 'না',
+            1 =>'হ্যা'
         ),
-        'isHidden' => false
-    ),
-    array(
-        'title' => 'ছবি(নিজ)',
-        'type' => 'photo',
-        'class' => 'photo file-upload',
-        'name' => 'self_picture',
-        'isHidden' => false
-    ),
-    array(
-        'title' => 'ছবি (স্বামী/স্ত্রী, অবিবাহিত হলে পরিবার প্রধানের ছবি) ',
-        'type' => 'photo',
-        'class' => 'family_photo file-upload',
-        'name' => 'spouse_or_family_member_picture',
-        'isHidden' => false
+        'isHidden' => false,
+        'onchange' => "showOption('.has_own_house', {'1' : '.got_tin_earlier'})",
+        'sub-form' => array(
+            array(
+                'title' => 'ইতোপূর্বে টিন পেয়েছেন কিনা',
+                'type' => 'select',
+                'class' => 'got_tin_earlier',
+                'name' => 'got_tin_earlier',
+                'isHidden' => true,
+                'options' => array(
+                    0 => 'না',
+                    1 =>'হ্যা'
+                ),
+                'onchange' => "showOption('.got_tin_earlier', {'1' : '.tin_count'})",
+                'sub-form' => array(
+                    array(
+                        'title' => 'পরিরমান (বান্ডিল)',
+                        'type' => 'text',
+                        'class' => 'tin_count',
+                        'name' => 'tin_count',
+                        'isHidden' => true
+                    ),
+                )
+            )
+        )
     )
 );

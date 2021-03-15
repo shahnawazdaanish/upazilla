@@ -61,6 +61,7 @@
         }
 
         $('#register-form').validate({
+            ignore:":not(:visible)",
             rules: {
                 @isset($form)
                     @foreach($form as $f)

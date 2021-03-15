@@ -82,6 +82,17 @@ return array(
         'isHidden' => false
     ),
     array(
+        'title' => 'লিঙ্গ',
+        'type' => 'select',
+        'class' => 'gender',
+        'name' => 'gender',
+        'options' => array(
+            0 =>'পুরুষ',
+            1 => 'মহিলা'
+        ),
+        'isHidden' => false
+    ),
+    array(
         'title' => 'ঠিকানা',
         'type' => 'label',
         'class' => 'address',
@@ -101,7 +112,7 @@ return array(
                         'name' => 'addr_perm_road',
                         'default' => 'অবিবাহিত',
                         'isHidden' => false,
-                        'backend_rules' => 'required'
+                        'backend_rules' => 'required|max:4'
                     ),
                     array(
                         'title' => 'ইউনিয়ন',
@@ -172,17 +183,6 @@ return array(
         )
     ),
     array(
-        'title' => 'লিঙ্গ',
-        'type' => 'select',
-        'class' => 'gender',
-        'name' => 'gender',
-        'options' => array(
-            0 =>'পুরুষ',
-            1 => 'মহিলা'
-        ),
-        'isHidden' => false
-    ),
-    array(
         'title' => 'জাতীয় পরিচয় পত্র নম্বর',
         'type' => 'text',
         'class' => 'nid_no',
@@ -232,6 +232,48 @@ return array(
             0 =>'না'
         ),
         'isHidden' => false
+    ),
+    array(
+        'title' => 'জমির বিবরণ',
+        'type' => 'label',
+        'class' => 'land',
+        'name' => '',
+        'isHidden' => false,
+        'sub-form' => array(
+            array(
+                'title' => 'জমির পরিমান',
+                'type' => 'text',
+                'class' => 'land_size',
+                'name' => 'land_size',
+                'default' => 'অবিবাহিত',
+                'isHidden' => false,
+                'backend_rules' => 'required|max:4'
+            ),
+            array(
+                'title' => 'মৌজা',
+                'type' => 'text',
+                'class' => 'land_mouja',
+                'name' => 'land_mouja',
+                'default' => 'অবিবাহিত',
+                'isHidden' => false,
+            ),
+            array(
+                'title' => 'দাগ',
+                'type' => 'text',
+                'class' => 'land_daag',
+                'name' => 'land_daag',
+                'default' => 'অবিবাহিত',
+                'isHidden' => false,
+            ),
+            array(
+                'title' => 'খতিয়ান নং',
+                'type' => 'text',
+                'class' => 'land_khatian',
+                'name' => 'land_khatian',
+                'default' => 'অবিবাহিত',
+                'isHidden' => false,
+            )
+        )
     ),
     array(
         'title' => 'ছবি(নিজ)',
