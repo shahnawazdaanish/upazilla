@@ -90,11 +90,6 @@ class RolePermissionTableSeeder extends Seeder
             'merchants.update',
             'merchants.delete',
 
-            'payments.view',
-            'payments.update',
-            'payments.missed',
-            'payments.search',
-
             'roles.view',
             'roles.create',
             'roles.update',
