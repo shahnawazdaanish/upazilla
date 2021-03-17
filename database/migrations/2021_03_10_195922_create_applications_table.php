@@ -15,9 +15,10 @@ class CreateApplicationsTable extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
-            $table->uuid("application_id");
-            $table->string("application_type");
+            $table->uuid("application_id")->index("index_application_id");
+            $table->string("application_type")->index("index_application_type");
             $table->string("application_to");
+            $table->unsignedBigInteger("application_to_id");
             $table->json("form_data");
             $table->string("applicant_name_bn")->index("index_app_name_bn");
             $table->string("applicant_name_en")->index("index_app_name_en");

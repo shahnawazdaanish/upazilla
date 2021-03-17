@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Admin;
 use App\Http\Controllers\Controller;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class AdminController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin_api')->except(['login', 'logout']);
+        $this->middleware('auth:api')->except(['login', 'logout','user','generalUser']);
         $this->middleware('permission:admins.create,admin', ['only' => ['store']]);
         $this->middleware('permission:admins.update,admin', ['only' => ['update']]);
         $this->middleware('permission:admins.view,admin', ['only' => ['index']]);
@@ -42,17 +43,19 @@ class AdminController extends Controller
         $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
-//            'store_id' => 'nullable|numeric',
+            'user_type' => 'required|in:superadmin,user',
             'remember' => 'boolean'
         ]);
+
+        $auth_guard = $request->get("user_type") === 'superadmin' ? 'admin_api' : '';
 
         try {
             // Change the driver to session to check login
             $credentials = request(['username', 'password']);
-            config(['auth.guards.admin_api.driver' => 'session']);
+            config(['auth.guards.'. $auth_guard .'.driver' => 'session']);
 
             // Check login details
-            if (!Auth::guard('admin_api')->attempt($credentials, $request->get('remember'))) {
+            if (!Auth::guard($auth_guard)->attempt($credentials, $request->get('remember'))) {
                 // Login fails
                 return response()->json([
                     'message' => 'Unable to login! Please check your credentials'
@@ -71,9 +74,9 @@ class AdminController extends Controller
             }*/
 
 
-            if (auth()->guard('admin_api')->user()->status == 'ACTIVE') {
+            if (auth()->guard($auth_guard)->user()->status == 'ACTIVE') {
                 // If successfully logged in
-                $user = auth()->guard('admin_api')->user();
+                $user = auth()->guard($auth_guard)->user();
                 $tokenResult = $user->createToken('Admin Access Token');
                 $token = $tokenResult->token;
 
@@ -92,7 +95,8 @@ class AdminController extends Controller
 //                    'store_logo' => $user->store->logo ?? "None",
                     'expires_at' => Carbon::parse(
                         $tokenResult->token->expires_at
-                    )->toDateTimeString()
+                    )->toDateTimeString(),
+                    'route_prefix' => $auth_guard === 'admin_api' ? 'admin' : 'general'
                 ]);
             } else {
                 auth()->logout();
@@ -146,6 +150,40 @@ class AdminController extends Controller
         }
         unset($admin->roles);
         return response()->json($admin);
+    }
+    public function generalUser(Request $request)
+    {
+        $admin = User::query()->select('id', 'name', 'username')->find($request->user()->id);
+        if ($admin) {
+            $admin['permissions'] = $admin->getPermissionsViaRoles()->map(function ($perms) {
+                return $perms->name;
+            });
+            $admin['myroles'] = $admin->getRoleNames()->map(function ($role) {
+                return $role;
+            });
+        }
+        unset($admin->roles);
+        return response()->json($admin);
+        if(Auth::check()) {
+            $guard = Auth::guard();
+            if ($guard === 'admin_api') {
+                $admin = Admin::query()->select('id', 'name', 'username')->find($request->user()->id);
+            } else {
+                $admin = User::query()->select('id', 'name', 'username')->find($request->user()->id);
+            }
+            if ($admin) {
+                $admin['permissions'] = $admin->getPermissionsViaRoles()->map(function ($perms) {
+                    return $perms->name;
+                });
+                $admin['myroles'] = $admin->getRoleNames()->map(function ($role) {
+                    return $role;
+                });
+            }
+            unset($admin->roles);
+            return response()->json($admin);
+        } else {
+            return response()->json("User is not logged in", 401);
+        }
     }
 
     /**

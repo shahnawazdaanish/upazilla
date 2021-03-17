@@ -41,16 +41,23 @@ class RolePermissionTableSeeder extends Seeder
         Permission::create(['name' => 'merchants.delete', 'guard_name' => 'admin']);
 
 
-        Permission::create(['name' => 'payments.view', 'guard_name' => 'admin']);
-        Permission::create(['name' => 'payments.update', 'guard_name' => 'admin']);
-        Permission::create(['name' => 'payments.missed', 'guard_name' => 'admin']);
-        Permission::create(['name' => 'payments.search', 'guard_name' => 'admin']);
+        Permission::create(['name' => 'applications.view', 'guard_name' => 'admin']);
+        Permission::create(['name' => 'applications.create', 'guard_name' => 'admin']);
+        Permission::create(['name' => 'applications.update', 'guard_name' => 'admin']);
+        Permission::create(['name' => 'applications.delete', 'guard_name' => 'admin']);
+        Permission::create(['name' => 'applications.download', 'guard_name' => 'admin']);
+        Permission::create(['name' => 'applications.approve', 'guard_name' => 'admin']);
+        Permission::create(['name' => 'applications.deny', 'guard_name' => 'admin']);
+        Permission::create(['name' => 'applications.forward', 'guard_name' => 'admin']);
+        Permission::create(['name' => 'applications.shortlist', 'guard_name' => 'admin']);
 
-
-        Permission::create(['name' => 'payments.view', 'guard_name' => 'user']);
-        Permission::create(['name' => 'payments.update', 'guard_name' => 'user']);
-        Permission::create(['name' => 'payments.missed', 'guard_name' => 'user']);
-        Permission::create(['name' => 'payments.search', 'guard_name' => 'user']);
+        Permission::create(['name' => 'applications.view', 'guard_name' => 'user']);
+        Permission::create(['name' => 'applications.create', 'guard_name' => 'user']);
+        Permission::create(['name' => 'applications.update', 'guard_name' => 'user']);
+        Permission::create(['name' => 'applications.delete', 'guard_name' => 'user']);
+        Permission::create(['name' => 'applications.approve', 'guard_name' => 'admin']);
+        Permission::create(['name' => 'applications.deny', 'guard_name' => 'admin']);
+        Permission::create(['name' => 'applications.forward', 'guard_name' => 'admin']);
 
 
         Permission::create(['name' => 'roles.view', 'guard_name' => 'admin']);
@@ -97,6 +104,16 @@ class RolePermissionTableSeeder extends Seeder
             'permissions.create',
             'permissions.update',
             'permissions.delete',
+
+            'applications.view',
+            'applications.create',
+            'applications.update',
+            'applications.delete',
+            'applications.download',
+            'applications.approve',
+            'applications.deny',
+            'applications.forward',
+            'applications.shortlist',
         ]);
     }
 }

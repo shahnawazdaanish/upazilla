@@ -31,8 +31,8 @@
                                                     onchange="{{ $f['onchange'] ?? '' }}">
                                                 <option value="">নির্বাচন</option>
                                                 @if(isset($f['options']) && is_array($f['options']))
-                                                    @foreach($f['options'] as $option)
-                                                        <option value="{{ $option }}">{{ $option }}</option>
+                                                    @foreach($f['options'] as $key => $option)
+                                                        <option value="{{ $key }}">{{ $option }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Application;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
@@ -16,6 +17,14 @@ class ApplicationController extends Controller
     public function Home()
     {
         $form = Config::get("forms.home");
+        $users = User::query()->get();
+
+        $data = [];
+        foreach ($users as $user) {
+            $data[$user->id] = $user->name;
+        }
+
+        $form[3]['options'] = $data;
 
         return view("application.home")->with('form', $form);
     }
@@ -122,7 +131,8 @@ class ApplicationController extends Controller
         $application = new Application();
         $application->application_id = (string)Str::uuid();
         $application->application_type = session()->get('application.first.subject');
-        $application->application_to = session()->get('application.first.to');
+        $application->application_to = User::query()->where('id', session()->get('application.first.to'))->first()->name;
+        $application->application_to_id = session()->get('application.first.to');
         $application->form_data = json_encode($form_data);
         $application->applicant_name_bn = request()->get("applicant_name_bn");
         $application->applicant_name_en = request()->get("applicant_name_en");
@@ -180,12 +190,12 @@ class ApplicationController extends Controller
         $application->spouse_death_date = request()->get("spouse_death_date");
         $application->family_main_man_income = request()->get("family_main_man_income");
         $application->disable_registration_card = request()->get("disable_registration_card");
-        $application->first_step_approval = request()->get("first_step_approval");
-        $application->first_step_approved_by = request()->get("first_step_approved_by");
-        $application->second_step_approval = request()->get("second_step_approval");
-        $application->second_step_approved_by = request()->get("second_step_approved_by");
-        $application->waiting_for_approval = request()->get("waiting_for_approval");
-        $application->short_listed = request()->get("short_listed");
+//        $application->first_step_approval = request()->get("first_step_approval");
+//        $application->first_step_approved_by = request()->get("first_step_approved_by");
+//        $application->second_step_approval = request()->get("second_step_approval");
+//        $application->second_step_approved_by = request()->get("second_step_approved_by");
+        $application->waiting_for_approval = session()->get('application.first.to');
+//        $application->short_listed = request()->get("short_listed");
         // $application->status = request()->get("status");
         $application->save();
 

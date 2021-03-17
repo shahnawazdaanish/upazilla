@@ -185,4 +185,14 @@ class Application extends Model
     public function getGettingOtherVataAttribute($value){
         return $value == 0 ? "না" : "হ্যা";
     }
+
+//    public function approvals() {
+//        return $this->hasMany(Approval::class, "application_id", "application_id");
+//    }
+    public function approvals() {
+        return $this->hasMany(Approval::class, "application_id", "application_id")
+            ->join("users", 'users.id', '=', 'approvals.user_id')
+            ->select('approvals.*', 'users.name')
+            ->orderBy('created_at', 'desc')->get();
+    }
 }

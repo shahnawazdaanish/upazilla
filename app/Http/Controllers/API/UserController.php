@@ -59,8 +59,6 @@ class UserController extends Controller
 //            $user = $user->with(['roles:id', 'roles:name', 'merchant:id', 'merchant:name']);
             $user = $user->with(['roles' => function ($query) {
                 $query->select('id', 'name');
-            }, 'merchant' => function ($query) {
-                $query->select('id', 'name');
             }]);
 
             // Provide based on paging or not
@@ -103,8 +101,7 @@ class UserController extends Controller
             'username' => 'required|string|unique:users,username|min:4',
             'email' => 'required|email',
             'password' => 'required|confirmed|min:6',
-            'role.name' => 'required|exists:roles,name,guard_name,user',
-            'merchant.name' => 'required|exists:merchants,name,status,ACTIVE',
+            'role.name' => 'required|exists:roles,name,guard_name,user'
         ]);
 
         DB::beginTransaction();
@@ -113,7 +110,6 @@ class UserController extends Controller
             $user->name = preg_replace('/[^ \w-]/', ' ', $request->get('name'));
             $user->username = $request->get('username');
             $user->email = $request->get('email');
-            $user->merchant_id = $request->input('merchant.id');
             $user->password = Hash::make($request->get('password'));
             $user->save();
             if ($user) {

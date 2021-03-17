@@ -58,7 +58,7 @@ Route::group([
 
     Route::get('missed/{reference}', 'API\PaymentController@missed');
     Route::get('all', 'API\PaymentController@allPayments');
-    Route::post('download_report', 'API\PaymentController@downloadReport');
+    Route::post('download_report', 'API\ApplicationController@downloadReport');
 });
 
 
@@ -111,7 +111,63 @@ Route::group([
         Route::get('utility/get_units', 'API\UtilityController@getUnits');
 
         Route::get('payment/all', 'API\PaymentController@allPayments');
-        Route::post('download_report', 'API\PaymentController@downloadReport');
+        Route::post('download_report', 'API\ApplicationController@downloadReport');
+
+
+        Route::post('applications/action', 'API\ApplicationController@TakeAction');
+        Route::get('comm/users', 'API\ApplicationController@GetUsers');
+
+
+        Route::get('get_admin_roles', 'API\RoleController@getAdminRoles');
+    });
+});
+
+Route::group([
+    'prefix' => 'general'
+], function () {
+
+    Route::post('login', 'API\AdminController@login');
+    Route::get('logout', 'API\AdminController@logout');
+
+    Route::group([
+        'prefix' => '/',
+        'middleware' => ['auth:api']
+    ], function(){
+
+        Route::post('/sync', 'API\AdminController@sync');
+
+        Route::get('user/me', 'API\AdminController@generalUser');
+        Route::post('user/change_password', 'API\AdminController@changePassword');
+
+
+        Route::apiResources([
+            'roles' => \API\RoleController::class,
+            'permissions' => \API\PermissionController::class,
+            'merchants' => \API\MerchantController::class,
+            'measurements' => \API\CommonController::class,
+            'inventories' => \API\CommonController::class,
+            'stores' => \API\CommonController::class,
+            'products' => \API\CommonController::class,
+            'applications' => \API\ApplicationController::class,
+            'admins' => \API\AdminController::class,
+            'users' => \API\UserController::class,
+        ]);
+
+        /*Route::resource('roles', 'API\RoleController');
+        Route::resource('permissions', 'API\PermissionController');
+        Route::resource('merchants', 'API\MerchantController');
+        Route::resource('measurements', 'API\MeasurementController');
+        Route::resource('stores', 'API\StoreController');
+        Route::resource('admins', 'API\AdminController');
+        Route::resource('users', 'API\UserController');*/
+
+        Route::get('utility/get_units', 'API\UtilityController@getUnits');
+
+        Route::get('payment/all', 'API\PaymentController@allPayments');
+
+
+        Route::post('applications/action', 'API\ApplicationController@TakeAction');
+        Route::get('comm/users', 'API\ApplicationController@GetUsers');
 
 
         Route::get('get_admin_roles', 'API\RoleController@getAdminRoles');
