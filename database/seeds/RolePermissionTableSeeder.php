@@ -55,9 +55,9 @@ class RolePermissionTableSeeder extends Seeder
         Permission::create(['name' => 'applications.create', 'guard_name' => 'user']);
         Permission::create(['name' => 'applications.update', 'guard_name' => 'user']);
         Permission::create(['name' => 'applications.delete', 'guard_name' => 'user']);
-        Permission::create(['name' => 'applications.approve', 'guard_name' => 'admin']);
-        Permission::create(['name' => 'applications.deny', 'guard_name' => 'admin']);
-        Permission::create(['name' => 'applications.forward', 'guard_name' => 'admin']);
+        Permission::create(['name' => 'applications.approve', 'guard_name' => 'user']);
+        Permission::create(['name' => 'applications.deny', 'guard_name' => 'user']);
+        Permission::create(['name' => 'applications.forward', 'guard_name' => 'user']);
 
 
         Permission::create(['name' => 'roles.view', 'guard_name' => 'admin']);
