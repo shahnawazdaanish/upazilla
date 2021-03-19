@@ -1,5 +1,5 @@
 <!-- JS -->
-<script src="{{ asset("application/vendor/jquery/jquery.min.js") }} "></script>
+<script src="{{ asset("application/js/jquery.min.js") }} "></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="{{ asset("application/vendor/nouislider/nouislider.min.js") }} "></script>
 <script src="{{ asset("application/vendor/wnumb/wNumb.js") }} "></script>
