@@ -31,6 +31,13 @@ class ApplicationController extends Controller
 
     public function StoreApplicationType()
     {
+        $validator = Validator::make(request()->all(),[
+           'application_type' => 'required',
+           'application_to' => 'required'
+        ]);
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator->errors());
+        }
         session()->put("application.first", request()->all());
 
         return redirect()->to('information');
