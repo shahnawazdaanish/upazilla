@@ -31,11 +31,11 @@ class ApplicationController extends Controller
 
     public function StoreApplicationType()
     {
-        $validator = Validator::make(request()->all(),[
-           'subject' => 'required',
-           'to' => 'required|exists:users,id'
+        $validator = Validator::make(request()->all(), [
+            'subject' => 'required',
+            'to' => 'required|exists:users,id'
         ]);
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return redirect()->back()->withErrors($validator->errors());
         }
         session()->put("application.first", request()->all());
@@ -88,13 +88,13 @@ class ApplicationController extends Controller
     public function StoreApplicationInfo()
     {
         $form_data = session()->get('application.first');
-        if(empty($form_data)) {
+        if (empty($form_data)) {
             return redirect()->back()->withErrors([
                 'Session is timed out, Please fill the form again'
             ]);
         }
         $formRules = $this->SwitchForm(session()->get('application.first.subject'));
-        if(!is_array($formRules)) {
+        if (!is_array($formRules)) {
             return redirect()->back()->withErrors([
                 'Chosen invalid form type, Please fill the form again'
             ]);
@@ -102,11 +102,11 @@ class ApplicationController extends Controller
 
         $rules = [];
         foreach ($formRules as $formElem) {
-            if(isset($formElem['backend_rules'])) {
+            if (isset($formElem['backend_rules'])) {
                 $rules[$formElem['name']] = $formElem['backend_rules'];
             }
 
-            if(isset($formElem['sub-form'])) {
+            if (isset($formElem['sub-form'])) {
                 foreach ($formElem['sub-form'] as $formElemL2) {
                     if (isset($formElemL2['backend_rules'])) {
                         $rules[$formElemL2['name']] = $formElemL2['backend_rules'];
@@ -125,7 +125,7 @@ class ApplicationController extends Controller
 
         $validator = Validator::make(request()->all(), $rules);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return redirect()->back()->withErrors($validator->errors());
         }
 
@@ -223,11 +223,11 @@ class ApplicationController extends Controller
             $extension = pathinfo(storage_path($path), PATHINFO_EXTENSION);
 
             // Move the file from the temporary path to the final location
-            $filePath = "uploads\\" . uniqid() . '.' . $extension;
+            $filePath = "uploads/" . uniqid() . '.' . $extension;
             $finalLocation = public_path($filePath);
             File::move($path, $finalLocation);
             return $filePath;
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             return '';
         }
     }
@@ -240,24 +240,24 @@ class ApplicationController extends Controller
         // $data = json_decode($dataRow->form_data, true);
 
         $data = [];
-        if(isset($application->application_type)) {
+        if (isset($application->application_type)) {
             $form = $this->SwitchForm($application->application_type);
 
             $data["আবেদনের বিষয়"] = $application->application_type;
             $data["বরাবর"] = $application->application_to;
 
             foreach ($form as $f) {
-                if(isset($f['title'])) {
+                if (isset($f['title'])) {
                     $data[$f['title']] = isset($f['name']) ? $application[$f['name']] : '';
                 }
-                if(isset($f['sub-form'])){
-                    foreach ($f['sub-form'] as $fL2){
-                        if(isset($fL2['title'])) {
+                if (isset($f['sub-form'])) {
+                    foreach ($f['sub-form'] as $fL2) {
+                        if (isset($fL2['title'])) {
                             $data[$fL2['title']] = isset($fL2['name']) ? $application[$fL2['name']] : '';
                         }
-                        if(isset($fL2['sub-form'])){
-                            foreach ($fL2['sub-form'] as $fL3){
-                                if(isset($fL3['title'])) {
+                        if (isset($fL2['sub-form'])) {
+                            foreach ($fL2['sub-form'] as $fL3) {
+                                if (isset($fL3['title'])) {
                                     $data[$fL3['title']] = isset($fL3['name']) ? $application[$fL3['name']] : '';
                                 }
                             }
