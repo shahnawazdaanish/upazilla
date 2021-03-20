@@ -6,7 +6,6 @@ return array(
         'type' => 'text',
         'class' => 'applicant_name_bn',
         'name' => 'applicant_name_bn',
-        'default' => 'Shahnawaz',
         'isHidden' => false,
         'js_rules' => "{required: true, maxlength: 11}",
         'backend_rules' => "required",
@@ -17,7 +16,6 @@ return array(
         'type' => 'text',
         'class' => 'applicant_name_en',
         'name' => 'applicant_name_en',
-        'default' => 'Shahnawaz',
         'isHidden' => false
     ),
     array(
@@ -25,7 +23,6 @@ return array(
         'type' => 'text',
         'class' => 'applicant_father_name_bn',
         'name' => 'applicant_father_name_bn',
-        'default' => 'Shahnawaz',
         'isHidden' => false
     ),
     array(
@@ -33,7 +30,6 @@ return array(
         'type' => 'text',
         'class' => 'applicant_father_name_en',
         'name' => 'applicant_father_name_en',
-        'default' => 'Shahnawaz',
         'isHidden' => false
     ),
     array(
@@ -41,7 +37,6 @@ return array(
         'type' => 'text',
         'class' => 'applicant_mother_name_bn',
         'name' => 'applicant_mother_name_bn',
-        'default' => 'Shahnawaz',
         'isHidden' => false
     ),
     array(
@@ -49,7 +44,6 @@ return array(
         'type' => 'text',
         'class' => 'applicant_mother_name_en',
         'name' => 'applicant_mother_name_en',
-        'default' => 'Shahnawaz',
         'isHidden' => false
     ),
     array(
@@ -57,7 +51,6 @@ return array(
         'type' => 'select',
         'class' => 'marital_status',
         'name' => 'marital_status',
-        'default' => 'অবিবাহিত',
         'options' => array(
             0 => 'অবিবাহিত',
             1 =>'বিবাহিত'
@@ -119,7 +112,6 @@ return array(
                         'type' => 'text',
                         'class' => 'perm_road',
                         'name' => 'addr_perm_road',
-                        'default' => 'অবিবাহিত',
                         'isHidden' => false,
                         'backend_rules' => 'required|max:4'
                     ),
@@ -128,7 +120,6 @@ return array(
                         'type' => 'text',
                         'class' => 'perm_union',
                         'name' => 'addr_perm_union',
-                        'default' => 'অবিবাহিত',
                         'isHidden' => false,
                     ),
                     array(
@@ -136,7 +127,6 @@ return array(
                         'type' => 'text',
                         'class' => 'perm_upazilla',
                         'name' => 'addr_perm_upazilla',
-                        'default' => 'অবিবাহিত',
                         'isHidden' => false,
                     ),
                     array(
@@ -144,7 +134,6 @@ return array(
                         'type' => 'text',
                         'class' => 'perm_zilla',
                         'name' => 'addr_perm_zilla',
-                        'default' => 'অবিবাহিত',
                         'isHidden' => false,
                     )
                 )
@@ -160,7 +149,6 @@ return array(
                         'type' => 'text',
                         'class' => 'pre_road',
                         'name' => 'addr_pres_road',
-                        'default' => 'অবিবাহিত',
                         'isHidden' => false,
                     ),
                     array(
@@ -168,7 +156,6 @@ return array(
                         'type' => 'text',
                         'class' => 'pre_union',
                         'name' => 'addr_pres_union',
-                        'default' => 'অবিবাহিত',
                         'isHidden' => false,
                     ),
                     array(
@@ -176,7 +163,6 @@ return array(
                         'type' => 'text',
                         'class' => 'pre_upazilla',
                         'name' => 'addr_pres_upazilla',
-                        'default' => 'অবিবাহিত',
                         'isHidden' => false,
                     ),
                     array(
@@ -184,7 +170,6 @@ return array(
                         'type' => 'text',
                         'class' => 'pre_zilla',
                         'name' => 'addr_pres_zilla',
-                        'default' => 'অবিবাহিত',
                         'isHidden' => false,
                     )
                 )
@@ -196,7 +181,6 @@ return array(
         'type' => 'text',
         'class' => 'nid_no',
         'name' => 'nid_no',
-        'default' => 'অবিবাহিত',
         'isHidden' => false
     ),
     array(
@@ -204,7 +188,6 @@ return array(
         'type' => 'text',
         'class' => 'mobile_no',
         'name' => 'mobile_no',
-        'default' => 'অবিবাহিত',
         'isHidden' => false
     ),
     array(
@@ -212,7 +195,6 @@ return array(
         'type' => 'text',
         'class' => 'spouse_nid',
         'name' => 'spouse_nid',
-        'default' => 'অবিবাহিত',
         'isHidden' => false
     ),
     array(
@@ -220,7 +202,6 @@ return array(
         'type' => 'text',
         'class' => 'family_members_count',
         'name' => 'family_members_count',
-        'default' => 'অবিবাহিত',
         'isHidden' => false
     ),
     array(
@@ -228,7 +209,6 @@ return array(
         'type' => 'text',
         'class' => 'monthly_income',
         'name' => 'monthly_income',
-        'default' => 'অবিবাহিত',
         'isHidden' => false
     ),
     array(
@@ -247,7 +227,6 @@ return array(
         'type' => 'text',
         'class' => 'disease_name',
         'name' => 'disease_name',
-        'default' => 'অবিবাহিত',
         'isHidden' => false,
         'backend_rules' => 'required'
     ),
