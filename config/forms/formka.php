@@ -7,7 +7,7 @@ return array(
         'class' => 'applicant_name_bn',
         'name' => 'applicant_name_bn',
         'isHidden' => false,
-        'js_rules' => "{required: true, maxlength: 11}",
+        'js_rules' => "{required: true, maxlength: 100}",
         'backend_rules' => "required",
 //        'html_extra' => 'pattern="[0-9]{1,5}"'
     ),

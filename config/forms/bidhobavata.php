@@ -7,7 +7,7 @@ return array(
         'class' => 'applicant_name_bn',
         'name' => 'applicant_name_bn',
         'isHidden' => false,
-        'js_rules' => "{required: true, maxlength: 11}",
+        'js_rules' => "{required: true, maxlength: 100}",
         'backend_rules' => "required",
 //        'html_extra' => 'pattern="[0-9]{1,5}"'
     ),
@@ -88,7 +88,7 @@ return array(
                         'class' => 'perm_road',
                         'name' => 'addr_perm_road',
                         'isHidden' => false,
-                        'backend_rules' => 'required|max:4'
+                        'backend_rules' => 'required|max:100'
                     ),
                     array(
                         'title' => 'ইউনিয়ন',
