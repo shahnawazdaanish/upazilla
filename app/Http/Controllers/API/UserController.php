@@ -107,7 +107,7 @@ class UserController extends Controller
         DB::beginTransaction();
         try {
             $user = new User();
-            $user->name = preg_replace('/[^ \w-]/', ' ', $request->get('name'));
+            $user->name = $request->get('name'); //preg_replace('/[^ \w-]/', ' ', $request->get('name'));
             $user->username = $request->get('username');
             $user->email = $request->get('email');
             $user->password = Hash::make($request->get('password'));
