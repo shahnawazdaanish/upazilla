@@ -74,8 +74,12 @@ class ApplicationController extends Controller
                 return Config::get("forms.kombol");
             case "বিবিধ":
                 return Config::get("forms.bibidho");
-            case "ভাতা":
-                return Config::get("forms.vata");
+            case "বয়স্ক ভাতা":
+                return Config::get("forms.boyoskovata");
+            case "বিধবা ভাতা":
+                return Config::get("forms.bidhobavata");
+            case "প্রতিবন্ধী ভাতা":
+                return Config::get("forms.protibondhivata");
             default:
                 return null;
         }

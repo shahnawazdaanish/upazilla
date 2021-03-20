@@ -53,26 +53,12 @@ return array(
         'isHidden' => false
     ),
     array(
-        'title' => 'বৈবাহিক অবস্থা',
-        'type' => 'select',
-        'class' => 'marital_status',
-        'name' => 'marital_status',
-        'default' => 'অবিবাহিত',
-        'options' => array(
-            0 => 'অবিবাহিত',
-            1 =>'বিবাহিত'
-        ),
-        'isHidden' => false,
-        'onchange' => "showOption('.marital_status', {'1' : '.spouse_name'})",
-        'sub-form' => array(
-            array(
-                'title' => 'স্বামী/ স্ত্রী নাম',
-                'type' => 'text',
-                'class' => 'spouse_name',
-                'name' => 'spouse_name',
-                'isHidden' => true
-            ),
-        )
+        'title' => 'স্বামীর নাম',
+        'type' => 'text',
+        'class' => 'spouse_name',
+        'name' => 'spouse_name',
+        'default' => 'Shahnawaz',
+        'isHidden' => false
     ),
     array(
         'title' => 'জন্ম তারিখ',
@@ -80,17 +66,6 @@ return array(
         'class' => 'date_of_birth',
         'name' => 'date_of_birth',
         'html_extra' => "autocomplete=\"false\" onchange=\"calculateAge('.date_of_birth input', '.self_age input')\"",
-        'isHidden' => false
-    ),
-    array(
-        'title' => 'লিঙ্গ',
-        'type' => 'select',
-        'class' => 'gender',
-        'name' => 'gender',
-        'options' => array(
-            0 =>'পুরুষ',
-            1 => 'মহিলা'
-        ),
         'isHidden' => false
     ),
     array(
@@ -200,18 +175,25 @@ return array(
         'isHidden' => false
     ),
     array(
-        'title' => 'মোবাইল নম্বরঃ',
+        'title' => 'স্বামীর মৃত্যু নিবন্ধন নম্বর',
         'type' => 'text',
-        'class' => 'mobile_no',
-        'name' => 'mobile_no',
+        'class' => 'spouse_death_no',
+        'name' => 'spouse_death_no',
         'default' => 'অবিবাহিত',
         'isHidden' => false
     ),
     array(
-        'title' => 'স্বামী/ স্ত্রীর জাতীয় পরিচয়পত্র নম্বর',
+        'title' => 'মৃত্যুবরণের তারিখ',
         'type' => 'text',
-        'class' => 'spouse_nid',
-        'name' => 'spouse_nid',
+        'class' => 'date_of_birth',
+        'name' => 'spouse_death_date',
+        'isHidden' => false
+    ),
+    array(
+        'title' => 'মোবাইল নম্বরঃ',
+        'type' => 'text',
+        'class' => 'mobile_no',
+        'name' => 'mobile_no',
         'default' => 'অবিবাহিত',
         'isHidden' => false
     ),

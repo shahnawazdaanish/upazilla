@@ -243,15 +243,6 @@ return array(
         'isHidden' => false
     ),
     array(
-        'title' => 'রোগের নাম',
-        'type' => 'text',
-        'class' => 'disease_name',
-        'name' => 'disease_name',
-        'default' => 'অবিবাহিত',
-        'isHidden' => false,
-        'backend_rules' => 'required'
-    ),
-    array(
         'title' => 'ছবি(নিজ)',
         'type' => 'photo',
         'class' => 'photo file-upload',
@@ -259,18 +250,25 @@ return array(
         'isHidden' => false
     ),
     array(
-        'title' => 'এই রোগে কতদিন ভুগছেন',
-        'type' => 'text',
-        'class' => 'suffering_since',
-        'name' => 'suffering_since',
+        'title' => 'অন্য কোন ভাতাভুক্ত কিনা',
+        'type' => 'select',
+        'class' => 'getting_other_vata',
+        'name' => 'getting_other_vata',
+        'default' => 'অবিবাহিত',
+        'options' => array(
+            1 => 'হ্যা',
+            0 =>'না'
+        ),
         'isHidden' => false,
-        'backend_rules' => 'required'
+        'onchange' => "showOption('.getting_other_vata', {'1' : '.other_vata_name'})",
+        'sub-form' => array(
+            array(
+                'title' => 'ভাতার নাম',
+                'type' => 'text',
+                'class' => 'other_vata_name',
+                'name' => 'other_vata_name',
+                'isHidden' => true
+            ),
+        )
     ),
-    array(
-        'title' => 'ছবি (ডাক্তারের ব্যবস্থাপত্র) ',
-        'type' => 'photo',
-        'class' => 'doctor_prescription file-upload',
-        'name' => 'doctor_prescription',
-        'isHidden' => false
-    )
 );

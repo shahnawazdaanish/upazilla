@@ -83,17 +83,6 @@ return array(
         'isHidden' => false
     ),
     array(
-        'title' => 'লিঙ্গ',
-        'type' => 'select',
-        'class' => 'gender',
-        'name' => 'gender',
-        'options' => array(
-            0 =>'পুরুষ',
-            1 => 'মহিলা'
-        ),
-        'isHidden' => false
-    ),
-    array(
         'title' => 'বয়স',
         'type' => 'text',
         'class' => 'self_age',
@@ -208,14 +197,6 @@ return array(
         'isHidden' => false
     ),
     array(
-        'title' => 'স্বামী/ স্ত্রীর জাতীয় পরিচয়পত্র নম্বর',
-        'type' => 'text',
-        'class' => 'spouse_nid',
-        'name' => 'spouse_nid',
-        'default' => 'অবিবাহিত',
-        'isHidden' => false
-    ),
-    array(
         'title' => 'পরিবারের সদস্য সংখ্যা',
         'type' => 'text',
         'class' => 'family_members_count',
@@ -224,22 +205,11 @@ return array(
         'isHidden' => false
     ),
     array(
-        'title' => 'মাসিক আয়',
+        'title' => 'পরিবার প্রধানের মাসিক আয়',
         'type' => 'text',
-        'class' => 'monthly_income',
-        'name' => 'monthly_income',
+        'class' => 'family_main_man_income',
+        'name' => 'family_main_man_income',
         'default' => 'অবিবাহিত',
-        'isHidden' => false
-    ),
-    array(
-        'title' => 'পরিবারের কোন সদস্য প্রতিবন্ধী কিনা ',
-        'type' => 'select',
-        'class' => 'is_family_member_disabled',
-        'name' => 'is_family_member_disabled',
-        'options' => array(
-            1 => 'হ্যা',
-            0 =>'না'
-        ),
         'isHidden' => false
     ),
     array(
@@ -271,4 +241,11 @@ return array(
             ),
         )
     ),
+    array(
+        'title' => 'প্রতিবন্ধী নিবন্ধন কার্ড',
+        'type' => 'photo',
+        'class' => 'photo file-upload',
+        'name' => 'disable_registration_card',
+        'isHidden' => false
+    )
 );
