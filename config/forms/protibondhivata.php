@@ -224,7 +224,7 @@ return array(
     array(
         'title' => 'প্রতিবন্ধী নিবন্ধন কার্ড',
         'type' => 'photo',
-        'class' => 'photo file-upload',
+        'class' => 'photo doc-upload',
         'name' => 'disable_registration_card',
         'isHidden' => false
     )

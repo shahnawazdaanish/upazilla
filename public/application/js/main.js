@@ -1,5 +1,6 @@
 (function ($) {
     var fileParent = $('.file-upload input[type="file"]');
+    var docParent = $('.doc-upload input[type="file"]');
     // First register any plugins
     $.fn.filepond.registerPlugin(
         FilePondPluginFileValidateType,
@@ -22,6 +23,13 @@
         styleProgressIndicatorPosition: 'right bottom',
         styleButtonRemoveItemPosition: 'left bottom',
         styleButtonProcessItemPosition: 'right bottom',
+    });
+
+
+    docParent.filepond({
+        allowImagePreview: true,
+        labelIdle: `ছবি তুলুন /<span class="filepond--label-action">আপলোড করুন</span>`,
+        imagePreviewHeight: 80
     });
     // Listen for addfile event
     fileParent.on('FilePond:addfile', function(e) {
