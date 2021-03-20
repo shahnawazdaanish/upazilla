@@ -24,7 +24,7 @@ class ApplicationController extends Controller
             $data[$user->id] = $user->name;
         }
 
-        $form[3]['options'] = $data;
+        $form[2]['options'] = $data;
 
         return view("application.home")->with('form', $form);
     }
