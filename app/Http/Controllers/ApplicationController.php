@@ -33,7 +33,7 @@ class ApplicationController extends Controller
     {
         $validator = Validator::make(request()->all(),[
            'subject' => 'required',
-           'to' => 'required'
+           'to' => 'required|exists:users,name'
         ]);
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator->errors());
