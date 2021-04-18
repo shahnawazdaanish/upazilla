@@ -63,7 +63,8 @@ return array(
                 'type' => 'text',
                 'class' => 'spouse_name',
                 'name' => 'spouse_name',
-                'isHidden' => true
+                'isHidden' => true,
+                'backend_rules' => 'required_if:marital_status,1'
             ),
         )
     ),
@@ -179,7 +180,10 @@ return array(
         'type' => 'text',
         'class' => 'mobile_no',
         'name' => 'mobile_no',
-        'isHidden' => false
+        'isHidden' => false,
+        'js_rules' => "{required: true, maxlength: 11, digits: true}",
+        'backend_rules' => "required|numeric|max:11|min:11",
+        'html_extra' => 'pattern="^(?:\+88|01)?\d{11}$"'
     ),
     array(
         'title' => 'স্বামী/ স্ত্রীর জাতীয় পরিচয়পত্র নম্বর',
