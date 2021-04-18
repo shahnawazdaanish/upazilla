@@ -3,9 +3,9 @@
         <div class="container-fluid">
             <a href="#" class="navbar-brand">
                 <!-- Logo Image -->
-                <img src="{{ asset("application/images/shebabatayon.jpeg") }}" width="45" alt="" class="d-inline-block align-middle mr-2">
+                <img src="{{ asset("application/images/shebabatayon.jpeg") }}" width="65" alt="" class="d-inline-block align-middle mr-2">
                 <!-- Logo Text -->
-                <span class="text-uppercase font-weight-bold">Company</span>
+                <span class="text-uppercase font-weight-bold">সেবা বাতায়ন</span>
             </a>
 
             <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
